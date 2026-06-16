@@ -46,6 +46,8 @@ export default function UploadPanel({ account }: { account: Account }) {
 
   const [validateOnly, setValidateOnly] = useState(true);
   const [files, setFiles] = useState<File[]>([]);
+  // Modo de selección de imágenes: archivos sueltos o carpeta (plana/anidada)
+  const [imgMode, setImgMode] = useState<"files" | "folder">("files");
 
   function onPickFiles(e: React.ChangeEvent<HTMLInputElement>) {
     const all = Array.from(e.target.files ?? []);
@@ -107,7 +109,13 @@ export default function UploadPanel({ account }: { account: Account }) {
     if (!primaryText.trim()) return setError("Falta el texto principal.");
     if (!link.trim()) return setError("Falta el enlace.");
     if (files.length === 0)
-      return setError(tipo === "Imágenes" ? "Elige la carpeta de imágenes." : "Selecciona vídeos.");
+      return setError(
+        tipo === "Vídeos"
+          ? "Selecciona vídeos."
+          : imgMode === "folder"
+          ? "Elige la carpeta de imágenes."
+          : "Selecciona imágenes."
+      );
 
     // Copy en un JSON (lo que espera el motor)
     const copyFields = {
@@ -278,29 +286,62 @@ export default function UploadPanel({ account }: { account: Account }) {
       {/* Media */}
       <section>
         <h4 className={sectionCls}>{tipo === "Imágenes" ? "Imágenes" : "Vídeos"}</h4>
+
+        {tipo === "Imágenes" && (
+          <div className="mb-3 flex gap-1 rounded-lg bg-slate-100 p-1 text-sm">
+            <button
+              type="button"
+              onClick={() => { setImgMode("files"); setFiles([]); }}
+              className={`flex-1 rounded-md py-1.5 font-medium transition ${imgMode === "files" ? "bg-white text-slate-900 shadow-sm" : "text-slate-500 hover:text-slate-700"}`}
+            >
+              🖼️ Imágenes sueltas
+            </button>
+            <button
+              type="button"
+              onClick={() => { setImgMode("folder"); setFiles([]); }}
+              className={`flex-1 rounded-md py-1.5 font-medium transition ${imgMode === "folder" ? "bg-white text-slate-900 shadow-sm" : "text-slate-500 hover:text-slate-700"}`}
+            >
+              📁 Carpeta (plana o V1/V1.1)
+            </button>
+          </div>
+        )}
+
         <label className="flex cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border border-dashed border-slate-300 bg-slate-50 px-4 py-6 text-center transition hover:border-indigo-400 hover:bg-indigo-50/40">
-          <span className="text-2xl">{tipo === "Imágenes" ? "📁" : "🎬"}</span>
+          <span className="text-2xl">
+            {tipo === "Vídeos" ? "🎬" : imgMode === "folder" ? "📁" : "🖼️"}
+          </span>
           <span className="text-sm font-medium text-slate-700">
             {files.length > 0
               ? `${files.length} archivo(s) seleccionado(s)`
-              : tipo === "Imágenes"
+              : tipo === "Vídeos"
+              ? "Haz clic para elegir vídeos"
+              : imgMode === "folder"
               ? "Elige la carpeta de imágenes"
-              : "Haz clic para elegir vídeos"}
+              : "Haz clic para elegir imágenes (1 o varias)"}
           </span>
           <span className="text-xs text-slate-400">
-            {tipo === "Imágenes" ? "Carpeta plana o anidada (V1/V1.1) — se detecta sola" : "MP4, MOV…"}
+            {tipo === "Vídeos"
+              ? "MP4, MOV…"
+              : imgMode === "folder"
+              ? "Plana o anidada (V1/V1.1) — se detecta sola"
+              : "JPG, PNG…"}
           </span>
-          {tipo === "Imágenes" ? (
+
+          {tipo === "Vídeos" ? (
+            <input key="vid" type="file" multiple accept="video/*" onChange={onPickFiles} className="hidden" />
+          ) : imgMode === "folder" ? (
             <input
+              key="folder"
               type="file"
               className="hidden"
               onChange={onPickFiles}
               {...({ webkitdirectory: "", directory: "" } as Record<string, string>)}
             />
           ) : (
-            <input type="file" multiple accept="video/*" onChange={onPickFiles} className="hidden" />
+            <input key="files" type="file" multiple accept="image/*" onChange={onPickFiles} className="hidden" />
           )}
         </label>
+
         {tipo === "Vídeos" && (
           <p className="mt-2 text-xs text-slate-400">
             Los vídeos se suben a tu biblioteca de Meta automáticamente (puede tardar según el peso).
