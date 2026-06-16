@@ -27,7 +27,7 @@ export default function TermsPage() {
         </p>
 
         <h2 className="pt-4 text-lg font-semibold text-slate-900">Contact</h2>
-        <p>Questions: snavarroc1912@gmail.com</p>
+        <p>Questions: tset@gmail.com</p>
       </div>
     </main>
   );

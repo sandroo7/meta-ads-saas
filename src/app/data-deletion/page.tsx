@@ -15,7 +15,7 @@ export default function DataDeletionPage() {
         <h2 className="pt-4 text-lg font-semibold text-slate-900">How to request deletion</h2>
         <ol className="list-decimal space-y-1 pl-5">
           <li>
-            Send an email to <strong>snavarroc1912@gmail.com</strong> with the subject
+            Send an email to <strong>tset@gmail.com</strong> with the subject
             &quot;Data deletion&quot; and the email address of your AutoAds account.
           </li>
           <li>We will delete your data within 30 days and confirm by email.</li>

@@ -47,7 +47,7 @@ export default function PrivacyPage() {
         </p>
 
         <h2 className="pt-4 text-lg font-semibold text-slate-900">Contact</h2>
-        <p>For any privacy question, contact: snavarroc1912@gmail.com</p>
+        <p>For any privacy question, contact: tset@gmail.com</p>
       </div>
     </main>
   );
