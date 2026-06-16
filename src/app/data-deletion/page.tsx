@@ -1,4 +1,4 @@
-export const metadata = { title: "Data Deletion — AutoAds" };
+export const metadata = { title: "Data Deletion — BulkAds" };
 
 export default function DataDeletionPage() {
   return (
@@ -8,7 +8,7 @@ export default function DataDeletionPage() {
 
       <div className="space-y-4 text-sm leading-relaxed">
         <p>
-          You can request deletion of all data associated with your AutoAds account
+          You can request deletion of all data associated with your BulkAds account
           (your profile, your encrypted Meta connection, and your job history).
         </p>
 
@@ -16,7 +16,7 @@ export default function DataDeletionPage() {
         <ol className="list-decimal space-y-1 pl-5">
           <li>
             Send an email to <strong>tset@gmail.com</strong> with the subject
-            &quot;Data deletion&quot; and the email address of your AutoAds account.
+            &quot;Data deletion&quot; and the email address of your BulkAds account.
           </li>
           <li>We will delete your data within 30 days and confirm by email.</li>
         </ol>

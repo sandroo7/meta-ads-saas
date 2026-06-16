@@ -71,7 +71,7 @@ export default async function Home() {
       </main>
 
       <footer className="mx-auto w-full max-w-5xl px-6 py-8 text-center text-sm text-slate-400">
-        AutoAds · Hecho para subir anuncios rápido
+        BulkAds · Hecho para subir anuncios rápido
       </footer>
     </div>
   );

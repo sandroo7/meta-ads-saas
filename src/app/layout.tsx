@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AutoAds — Sube anuncios a Meta en segundos",
+  title: "BulkAds — Sube anuncios a Meta en segundos",
   description: "Automatiza la subida de anuncios a Facebook e Instagram.",
 };
 

@@ -1,4 +1,4 @@
-export const metadata = { title: "Privacy Policy — AutoAds" };
+export const metadata = { title: "Privacy Policy — BulkAds" };
 
 export default function PrivacyPage() {
   return (
@@ -8,7 +8,7 @@ export default function PrivacyPage() {
 
       <div className="space-y-4 text-sm leading-relaxed">
         <p>
-          AutoAds (&quot;the Service&quot;) helps users create and upload advertisements
+          BulkAds (&quot;the Service&quot;) helps users create and upload advertisements
           to Meta (Facebook &amp; Instagram) through the Meta Marketing API. This
           policy explains what we collect and how we use it.
         </p>

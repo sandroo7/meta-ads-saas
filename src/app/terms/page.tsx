@@ -1,4 +1,4 @@
-export const metadata = { title: "Terms of Service — AutoAds" };
+export const metadata = { title: "Terms of Service — BulkAds" };
 
 export default function TermsPage() {
   return (
@@ -8,7 +8,7 @@ export default function TermsPage() {
 
       <div className="space-y-4 text-sm leading-relaxed">
         <p>
-          By using AutoAds (&quot;the Service&quot;) you agree to these terms. The
+          By using BulkAds (&quot;the Service&quot;) you agree to these terms. The
           Service lets you create and upload ads to your own Meta (Facebook &amp;
           Instagram) ad accounts via the Meta Marketing API.
         </p>
